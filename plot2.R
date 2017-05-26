@@ -10,14 +10,16 @@
 
 library(ggplot2)
 
-##-------------------------------------------------------------------------
-## 'household_power_consumption.txt' must be present on the root directory 
-## otherwise uncomment this code to download source data
-##-------------------------------------------------------------------------
-# fileUrl = "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
-# download.file(fileUrl, "household_power_consumption.zip")
-# unzip(zipfile = "household_power_consumption.zip")
-# file.remove("household_power_consumption.zip")
+##--------------------------------------------------------------------
+## Check if 'household_power_consumption.txt' is in the root directory
+## otherwise download source data
+##--------------------------------------------------------------------
+fileUrl = "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+if (!file.exists("./household_power_consumption.txt")) {
+  download.file(fileUrl, destfile = "household_power_consumption.zip")
+  unzip("household_power_consumption.zip")
+  file.remove("household_power_consumption.zip")
+}
 
 ##------------------------------------------------
 ## Read File: data from 2007-02-01 and 2007-02-02
